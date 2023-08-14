@@ -1,8 +1,24 @@
 FROM debian:buster
 
-COPY . /mariadb
 
-CMD apt install mariadb-server
+RUN apt-get update
+RUN apt-get install -y mariadb-server
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

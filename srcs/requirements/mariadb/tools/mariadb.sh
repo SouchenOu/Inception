@@ -1,10 +1,41 @@
-systemctl status mariadb
-mysql_secure_installation
-mysql -u root -p
-CREATE DATABASE IF NOT EXIST $DB_NAME;
-CREATE USER $DB_USER'@'localhost' IDENTIFIED BY '$DB_PASSW';
-GRANT ALL PRIVILEGES ON *.* to '$DB_USER'@'localhost';
-FLUSH PRIVILEGES;
+
+#Pour demarer mySql
+service mysql start;
+
+#create database table
+mysql -e "CREATE DATABASE IF NOT EXISTS $SQL_DATABASE"
+
+#After create database_table we will create a user who can manipulate it
+mysql -e "CREATE USER IF NOT EXISTS '$SQL_USER'@'localhost' IDENTIFIED BY '$SQL_PASSWORD';"
+
+#I give all rights to this user(Je donne tous les droits à cet utilisateur.)
+
+mysql -e "GRANT ALL PRIVILEGES ON \`${SQL_DATABASE}\`*.* TO \`${SQL_USER}\`
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# systemctl status mariadb
+# mysql_secure_installation
+# mysql -u root -p
+# CREATE DATABASE IF NOT EXIST $DB_NAME;
+# CREATE USER $DB_USER'@'localhost' IDENTIFIED BY '$DB_PASSW';
+# GRANT ALL PRIVILEGES ON *.* to '$DB_USER'@'localhost';
+# FLUSH PRIVILEGES;
 
 
 
