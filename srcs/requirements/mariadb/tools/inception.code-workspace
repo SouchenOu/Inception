@@ -1,0 +1,11 @@
+{
+	"folders": [
+		{
+			"path": "../../../.."
+		},
+		{
+			"path": "../../../../../ince/srcs/requirements/mariadb"
+		}
+	],
+	"settings": {}
+}
