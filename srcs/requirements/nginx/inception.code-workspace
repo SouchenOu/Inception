@@ -1,0 +1,14 @@
+{
+    "folders": [
+		{
+			"path": "../../.."
+		},
+		{
+			"path": "../../../../tre/inc/srcs/requirements/WordPress"
+		},
+		{
+			"path": "../../../../tre/inc/srcs/requirements/nginx"
+		}
+	],
+    "settings": {}
+}
