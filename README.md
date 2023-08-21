@@ -278,3 +278,24 @@ mysql -uroot -p$MYSQL_ROOT_PASSWORD $MYSQL_DATABASE < /usr/local/bin/wordpress.s
 	SELECT wp_users.display_name FROM wp_users; // display username from wordpress database
 	SELECT *  FROM wp_users; // select
 ```
+
+
+
+Creating privacy key
+
+<img width="780" alt="Screen Shot 2023-08-21 at 10 26 48 AM" src="https://github.com/SouchenOu/Inception/assets/87101785/a03207b3-805e-40e8-9b51-03f6e895e47f">
+
+
+<img width="1271" alt="Screen Shot 2023-08-21 at 10 13 07 AM" src="https://github.com/SouchenOu/Inception/assets/87101785/89c93f6a-90cc-4ef6-8909-c1b52185b889">
+
+
+
+<img width="780" alt="Screen Shot 2023-08-21 at 10 17 55 AM" src="https://github.com/SouchenOu/Inception/assets/87101785/c3463fa7-5148-428f-b0fc-27e77ac7533c">
+
+
+<img width="780" alt="Screen Shot 2023-08-21 at 10 24 41 AM" src="https://github.com/SouchenOu/Inception/assets/87101785/d0d9c86e-69cd-4b4c-9dae-11479abc8bd6">
+
+
+
+
+
