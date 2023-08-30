@@ -5,9 +5,8 @@ mysql -u root -p -e "CREATE USER IF NOT EXISTS '$SQL_USER'@'localhost' IDENTIFIE
 mysql -u root -p -e "GRANT ALL PRIVILEGES ON *.* TO '$SQL_USER'@'%';" ;
 mysql  -u root -p -e "alter user 'root'@'localhost' identified by '$MYSQL_ROOT_PASSWORD';" ;
 mysql  -u root -p -e "FLUSH PRIVILEGES;"
-exec mysqld_safe
 
-
+#FLUSH PRIVILEGES ---> Plus qu’à rafraichir tout cela pour que MySQL le prenne en compte.
 
 # /bin/sh is an executable representing the system shell and usually implemented as a symbolic link pointing to the executable for whichever shell is the system shell. The system shell is basically the default shell that the script should use
 
