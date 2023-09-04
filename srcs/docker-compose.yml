@@ -5,16 +5,16 @@ volumes:
     driver_opts:
       o: bind
       type: 'none'
-      device: /goinfre/souchen/inception/mariadb
+      device: /Users/souchen/Desktop/inception/srcs/data/mariadb
   wordpress:
     driver: local
     driver_opts:
       type: 'none'
       o: bind
-      device: /goinfre/souchen/inception/wordpress
+      device: /Users/souchen/Desktop/inception/srcs/data/wordpress
 services:
   mariadb:
-    image: mariadb
+    container_name: mariadb
     ports:
       - 3360:3360
     build: ./requirements/mariadb
@@ -25,7 +25,7 @@ services:
     restart: unless-stopped 
 
   wordpress:
-    image: wordpress
+    container_name: wordpress
     env_file: 
       - .env
     ports:
@@ -38,7 +38,7 @@ services:
     restart: on-failure
 
   nginx:
-    image: nginx
+    container_name: nginx
     volumes:
       - wordpress:/var/www/wordpress
     ports:
@@ -48,20 +48,4 @@ services:
     build: ./requirements/nginx
     env_file: 
       - .env
-    restart: on-failure   
-  
-  
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
+    restart: on-failure
