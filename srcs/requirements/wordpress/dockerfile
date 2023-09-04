@@ -2,7 +2,7 @@ FROM debian:buster
 RUN apt update
 RUN apt-get -y install wget
 RUN apt-get install -y php7.3 php-fpm php-mysql mariadb-client
-RUN sed -i "s/listen = \/run\/php\/php7.3-fpm.sock/listen = 9000/" "/etc/php/7.3/fpm/pool.d/www.conf"
+# RUN sed -i "s/listen = \/run\/php\/php7.3-fpm.sock/listen = 9000/" "/etc/php/7.3/fpm/pool.d/www.conf"
 RUN wget https://fr.wordpress.org/wordpress-6.0-fr_FR.tar.gz -P /var/www
 RUN cd /var/www && tar -xzf wordpress-6.0-fr_FR.tar.gz && rm wordpress-6.0-fr_FR.tar.gz
 # COPY ./conf/auto_config.sh /var/www/
@@ -10,11 +10,11 @@ RUN wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.ph
 RUN chmod +x wp-cli.phar
 RUN mv wp-cli.phar /usr/local/bin/wp
 RUN touch /var/www/wordpress/wp-config.php;
-RUN sed -i "s/votre_nom_de_bdd/${SQL_DATABASE}/g" "/var/www/wordpress/wp-config-sample.php"
-RUN sed -i "s/votre_utilisateur_de_bdd/${SQL_USER}/g" "/var/www/wordpress/wp-config-sample.php"
-RUN sed -i "s/votre_mdp_de_bdd/${SQL_PASSWORD}/g" "/var/www/wordpress/wp-config-sample.php"
-RUN sed -i "s/localhost/${db_host}/g" "/var/www/wordpress/wp-config-sample.php"
-RUN cp /var/www/wordpress/wp-config-sample.php /var/www/wordpress/wp-config.php:q!
+RUN sed -i "s/votre_nom_de_bdd/wordpress/g" "/var/www/wordpress/wp-config-sample.php"
+RUN sed -i "s/votre_utilisateur_de_bdd/souchen/g" "/var/www/wordpress/wp-config-sample.php"
+RUN sed -i "s/votre_mdp_de_bdd/1234/g" "/var/www/wordpress/wp-config-sample.php"
+RUN sed -i "s/localhost/localhost/g" "/var/www/wordpress/wp-config-sample.php"
+RUN cp /var/www/wordpress/wp-config-sample.php /var/www/wordpress/wp-config.php
 
 # RUN chmod +x /var/www/auto_config.sh
 # ENTRYPOINT [ "/var/www/auto_config.sh" ]

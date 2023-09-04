@@ -1,51 +1,52 @@
 version: "3"
-volumes:
-  mariadb:
-    driver: local
-    driver_opts:
-      o: bind
-      type: 'none'
-      device: /Users/souchen/Desktop/inception/srcs/data/mariadb
-  wordpress:
-    driver: local
-    driver_opts:
-      type: 'none'
-      o: bind
-      device: /Users/souchen/Desktop/inception/srcs/data/wordpress
+# volumes:
+#   mariadb:
+#     driver: local
+#     driver_opts:
+#       o: bind
+#       type: 'none'
+#       device: /Users/souchen/Desktop/inception/srcs/data/mariadb
+#   wordpress:
+#     driver: local
+#     driver_opts:
+#       type: 'none'
+#       o: bind
+#       device: /Users/souchen/Desktop/inception/srcs/data/wordpress
+networks:
+  appInception:
+    driver: bridge
 services:
   mariadb:
     container_name: mariadb
-    ports:
-      - 3360:3360
     build: ./requirements/mariadb
-    env_file: 
-      - .env
+    environment:
+      MYSQL_ROOT_PASSWORD: "1234"
+      SQL_DATABASE: wordpress
+      SQL_USER: souchen
+      SQL_PASSWORD: "1234"
     volumes:
-      - mariadb:/var/lib/mysql
-    restart: unless-stopped 
+      - mysql_vol:/var/lib/mysql
+    restart: unless-stopped
+    networks:
+      - appInception
 
   wordpress:
     container_name: wordpress
-    env_file: 
-      - .env
+    environment:
+      WORDPRESS_DB_HOST: mariadb:3306
+      WORDPRESS_DB_USER: souchen
+      WORDPRESS_DB_PASSWORD: "123456"
+      WORDPRESS_DB_NAME: wp
     ports:
-      - 9000:9000
+      - 8000:80
     volumes:
-      - wordpress:/var/www/wordpress
+      ["./:/var/www/html"]
     build: ./requirements/wordpress
     depends_on:
       - mariadb
     restart: on-failure
+    networks:
+      - appInception
 
-  nginx:
-    container_name: nginx
-    volumes:
-      - wordpress:/var/www/wordpress
-    ports:
-      - 443:443
-    depends_on:
-      - wordpress
-    build: ./requirements/nginx
-    env_file: 
-      - .env
-    restart: on-failure
+volumes:
+  mysql_vol: {}
