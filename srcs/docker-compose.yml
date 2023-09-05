@@ -1,17 +1,17 @@
 version: "3"
-# volumes:
-#   mariadb:
-#     driver: local
-#     driver_opts:
-#       o: bind
-#       type: 'none'
-#       device: /Users/souchen/Desktop/inception/srcs/data/mariadb
-#   wordpress:
-#     driver: local
-#     driver_opts:
-#       type: 'none'
-#       o: bind
-#       device: /Users/souchen/Desktop/inception/srcs/data/wordpress
+volumes:
+  mariadb:
+    driver: local
+    driver_opts:
+    o: bind
+    type: 'none'
+    device: /home/souchen/data/mariadb
+  wordpress:
+    driver: local
+    driver_opts:
+    type: 'none'
+    o: bind
+    device: /home/souchen/data/wordpress
 networks:
   appInception:
     driver: bridge
