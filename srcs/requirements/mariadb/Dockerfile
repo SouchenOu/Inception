@@ -6,7 +6,7 @@ COPY  ./conf/50-server.cnf /etc/mysql/mariadb.conf.d/50-server.cnf
 RUN chmod +x /var/www/mariadb.sh
 
 #run the mariadb.sh
-CMD [ "/var/www/mariadb.sh" ]
+ENTRYPOINT [ "/var/www/mariadb.sh" ]
 
 # # running mysqld daemon
-# CMD ["mysqld"]
+CMD ["mysqld"]

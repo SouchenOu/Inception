@@ -1,10 +1,17 @@
 #!/bin/bash
 service mysql start
-mysql  -u root -p -e "CREATE DATABASE IF NOT EXISTS $SQL_DATABASE";
-mysql -u root -p -e "CREATE USER IF NOT EXISTS '$SQL_USER'@'localhost' IDENTIFIED BY '$SQL_PASSWORD'" ;
-mysql -u root -p -e "GRANT ALL PRIVILEGES ON *.* TO '$SQL_USER'@'%';" ;
-mysql  -u root -p -e "alter user 'root'@'localhost' identified by '$MYSQL_ROOT_PASSWORD';" ;
-mysql  -u root -p -e "FLUSH PRIVILEGES;"
+mysql -e "CREATE DATABASE IF NOT EXISTS $SQL_DATABASE";
+mysql -e "CREATE USER IF NOT EXISTS '$SQL_USER'@'%' IDENTIFIED BY '$SQL_PASSWORD'" ;
+mysql -e "GRANT ALL ON $SQL_DATABASE.* TO '$SQL_USER'@'%'" ;
+mysql -e "FLUSH PRIVILEGES;"
+mysql -e "alter user 'root'@'localhost' identified by '$MYSQL_ROOT_PASSWORD';" ;
+mysql -e "FLUSH PRIVILEGES;"
+
+service mysql stop
+# kill 
+
+exec "$@"
+
 
 #FLUSH PRIVILEGES ---> Plus qu’à rafraichir tout cela pour que MySQL le prenne en compte.
 

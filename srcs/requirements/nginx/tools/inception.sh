@@ -24,3 +24,4 @@ openssl req -x509 -nodes -out /etc/nginx/ssl/inception.crt -keyout /etc/nginx/ss
 # /O: Organization Name (eg, company)
 # /OU: Organizational Unit Name (eg, section)
 # /CN: Common Name (eg, your name or your server's hostname)
+exec "$@"
