@@ -1,0 +1,100 @@
+#1 [wordpress:inception internal] load build definition from dockerfile
+#1 transferring dockerfile: 706B 0.0s done
+#1 DONE 0.0s
+
+#2 [mariadb:inception internal] load build definition from Dockerfile
+#2 transferring dockerfile: 32B done
+#2 DONE 0.0s
+
+#3 [nginx:inception internal] load build definition from Dockerfile
+#3 transferring dockerfile: 385B done
+#3 DONE 0.0s
+
+#4 [wordpress:inception internal] load .dockerignore
+#4 transferring context: 2B done
+#4 DONE 0.0s
+
+#5 [nginx:inception internal] load .dockerignore
+#5 transferring context: 2B done
+#5 DONE 0.0s
+
+#6 [mariadb:inception internal] load .dockerignore
+#6 transferring context: 2B done
+#6 DONE 0.0s
+
+#7 [mariadb:inception internal] load metadata for docker.io/library/debian:buster
+#7 DONE 1.4s
+
+#8 [nginx:inception internal] load build context
+#8 transferring context: 124B done
+#8 DONE 0.0s
+
+#9 [nginx:inception 7/8] COPY ./conf/nginx.conf /etc/nginx/sites-enabled/default
+#9 CACHED
+
+#10 [nginx:inception 5/8] RUN apt install openssl -y
+#10 CACHED
+
+#11 [nginx:inception 6/8] COPY ./tools/inception.sh /var/www
+#11 CACHED
+
+#12 [nginx:inception 3/8] RUN apt upgrade && apt install nginx -y
+#12 CACHED
+
+#13 [nginx:inception 4/8] RUN mkdir -p /etc/nginx/ssl
+#13 CACHED
+
+#14 [nginx:inception 8/8] RUN chmod +x /var/www/inception.sh
+#14 CACHED
+
+#15 [mariadb:inception internal] load build context
+#15 transferring context: 125B done
+#15 DONE 0.0s
+
+#16 [mariadb:inception 4/5] COPY  ./conf/50-server.cnf /etc/mysql/mariadb.conf.d/50-server.cnf
+#16 CACHED
+
+#17 [mariadb:inception 3/5] COPY ./tools/mariadb.sh /var/www/
+#17 CACHED
+
+#18 [mariadb:inception 2/5] RUN apt update && apt install -y mariadb-server
+#18 CACHED
+
+#19 [mariadb:inception 5/5] RUN chmod +x /var/www/mariadb.sh
+#19 CACHED
+
+#20 [nginx:inception 1/6] FROM docker.io/library/debian:buster@sha256:b86bfc1dd2fb1820fea6c1e0b6e23d155198b518b3a506f6edad71bf6e9a8cef
+#20 DONE 0.0s
+
+#21 [wordpress:inception internal] load build context
+#21 transferring context: 1.05kB done
+#21 DONE 0.0s
+
+#22 [wordpress:inception 3/6] RUN apt-get -y install wget
+#22 CACHED
+
+#23 [wordpress:inception 2/6] RUN apt update
+#23 CACHED
+
+#24 [wordpress:inception 4/6] RUN apt-get install -y php7.3 php-fpm php-mysql mariadb-client
+#24 CACHED
+
+#25 [wordpress:inception 5/6] COPY ./conf/auto_config.sh /var/www/
+#25 DONE 0.0s
+
+#26 [mariadb:inception] exporting to image
+#26 exporting layers done
+#26 writing image sha256:ad668b7099acff56b8b8933a69b21516fccd19a7d339f94b649260132dee9b89 done
+#26 writing image sha256:42446e2dff1cede78d80c22b94eb346403d7b348420a8b76d6460761ce19e2a7 done
+#26 naming to docker.io/library/nginx:inception done
+#26 naming to docker.io/library/mariadb:inception done
+#26 DONE 0.0s
+
+#27 [wordpress:inception 6/6] RUN chmod +x /var/www/auto_config.sh
+#27 DONE 0.3s
+
+#26 [wordpress:inception] exporting to image
+#26 exporting layers 0.0s done
+#26 writing image sha256:edaa482c41ff3e26caa9c181ae9d628de99f113fca56ed321d0f337b4ed5ba80 done
+#26 naming to docker.io/library/wordpress:inception done
+#26 DONE 0.0s

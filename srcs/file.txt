@@ -1,0 +1,540 @@
+#1 [mariadb:inception internal] load build definition from Dockerfile
+#1 transferring dockerfile: 30B
+#1 transferring dockerfile: 32B done
+#1 DONE 0.0s
+
+#2 [nginx:inception internal] load build definition from Dockerfile
+#2 transferring dockerfile: 32B done
+#2 DONE 0.0s
+
+#3 [wordpress:inception internal] load build definition from dockerfile
+#3 transferring dockerfile: 252B done
+#3 DONE 0.0s
+
+#4 [mariadb:inception internal] load .dockerignore
+#4 transferring context: 2B done
+#4 DONE 0.0s
+
+#5 [wordpress:inception internal] load .dockerignore
+#5 transferring context: 2B done
+#5 DONE 0.0s
+
+#6 [nginx:inception internal] load .dockerignore
+#6 transferring context: 2B done
+#6 DONE 0.0s
+
+#7 [nginx:inception internal] load metadata for docker.io/library/debian:buster
+#7 DONE 1.2s
+
+#8 [nginx:inception 2/5] RUN apt update
+#8 CACHED
+
+#9 [wordpress:inception internal] load build context
+#9 transferring context: 904B done
+#9 DONE 0.0s
+
+#10 [nginx:inception internal] load build context
+#10 transferring context: 124B done
+#10 DONE 0.0s
+
+#11 [nginx:inception 6/8] COPY ./tools/inception.sh /var/www
+#11 CACHED
+
+#12 [nginx:inception 4/8] RUN mkdir -p /etc/nginx/ssl
+#12 CACHED
+
+#13 [nginx:inception 5/8] RUN apt install openssl -y
+#13 CACHED
+
+#14 [nginx:inception 3/8] RUN apt upgrade && apt install nginx -y
+#14 CACHED
+
+#15 [nginx:inception 7/8] COPY ./conf/nginx.conf /etc/nginx/sites-enabled/default
+#15 CACHED
+
+#16 [nginx:inception 8/8] RUN chmod +x /var/www/inception.sh
+#16 CACHED
+
+#17 [nginx:inception 1/5] FROM docker.io/library/debian:buster@sha256:b86bfc1dd2fb1820fea6c1e0b6e23d155198b518b3a506f6edad71bf6e9a8cef
+#17 DONE 0.0s
+
+#18 [mariadb:inception internal] load build context
+#18 transferring context: 125B done
+#18 DONE 0.0s
+
+#19 [mariadb:inception 2/5] RUN apt update && apt install -y mariadb-server
+#19 CACHED
+
+#20 [mariadb:inception 4/5] COPY  ./conf/50-server.cnf /etc/mysql/mariadb.conf.d/50-server.cnf
+#20 CACHED
+
+#21 [mariadb:inception 3/5] COPY ./tools/mariadb.sh /var/www/
+#21 CACHED
+
+#22 [mariadb:inception 5/5] RUN chmod +x /var/www/mariadb.sh
+#22 CACHED
+
+#23 [nginx:inception] exporting to image
+#23 exporting layers done
+#23 writing image sha256:42446e2dff1cede78d80c22b94eb346403d7b348420a8b76d6460761ce19e2a7 done
+#23 naming to docker.io/library/mariadb:inception done
+#23 writing image sha256:ad668b7099acff56b8b8933a69b21516fccd19a7d339f94b649260132dee9b89 done
+#23 naming to docker.io/library/nginx:inception done
+#23 DONE 0.0s
+
+#24 [wordpress:inception 3/5] RUN apt-get install -y php7.3 php-fpm php-mysql mariadb-client
+#24 0.235 Reading package lists...
+#24 0.813 Building dependency tree...
+#24 0.898 Reading state information...
+#24 0.979 The following additional packages will be installed:
+#24 0.979   bzip2 file libaio1 libapparmor1 libargon2-1 libbsd0 libconfig-inifiles-perl
+#24 0.979   libdbd-mysql-perl libdbi-perl libedit2 libgdbm-compat4 libgdbm6 libgpm2
+#24 0.979   libicu63 libmagic-mgc libmagic1 libmariadb3 libncurses6 libpcre2-8-0
+#24 0.979   libperl5.28 libprocps7 libreadline5 libsnappy1v5 libsodium23 libssl1.1
+#24 0.979   libterm-readkey-perl libxml2 lsb-base mariadb-client-10.3
+#24 0.979   mariadb-client-core-10.3 mariadb-common mime-support mysql-common netbase
+#24 0.979   perl perl-modules-5.28 php-common php7.3-cli php7.3-common php7.3-fpm
+#24 0.979   php7.3-json php7.3-mysql php7.3-opcache php7.3-readline procps psmisc
+#24 0.980   readline-common sensible-utils ucf xz-utils
+#24 0.980 Suggested packages:
+#24 0.980   bzip2-doc libclone-perl libmldbm-perl libnet-daemon-perl
+#24 0.980   libsql-statement-perl gdbm-l10n gpm perl-doc libterm-readline-gnu-perl
+#24 0.980   | libterm-readline-perl-perl make libb-debug-perl liblocale-codes-perl
+#24 0.980   php-pear readline-doc
+#24 1.194 The following NEW packages will be installed:
+#24 1.194   bzip2 file libaio1 libapparmor1 libargon2-1 libbsd0 libconfig-inifiles-perl
+#24 1.194   libdbd-mysql-perl libdbi-perl libedit2 libgdbm-compat4 libgdbm6 libgpm2
+#24 1.194   libicu63 libmagic-mgc libmagic1 libmariadb3 libncurses6 libpcre2-8-0
+#24 1.194   libperl5.28 libprocps7 libreadline5 libsnappy1v5 libsodium23 libssl1.1
+#24 1.194   libterm-readkey-perl libxml2 lsb-base mariadb-client mariadb-client-10.3
+#24 1.194   mariadb-client-core-10.3 mariadb-common mime-support mysql-common netbase
+#24 1.194   perl perl-modules-5.28 php-common php-fpm php-mysql php7.3 php7.3-cli
+#24 1.194   php7.3-common php7.3-fpm php7.3-json php7.3-mysql php7.3-opcache
+#24 1.195   php7.3-readline procps psmisc readline-common sensible-utils ucf xz-utils
+#24 1.391 0 upgraded, 54 newly installed, 0 to remove and 0 not upgraded.
+#24 1.391 Need to get 32.3 MB of archives.
+#24 1.391 After this operation, 170 MB of additional disk space will be used.
+#24 1.391 Get:1 http://deb.debian.org/debian buster/main amd64 perl-modules-5.28 all 5.28.1-6+deb10u1 [2873 kB]
+#24 1.770 Get:2 http://deb.debian.org/debian buster/main amd64 libgdbm6 amd64 1.18.1-4 [64.7 kB]
+#24 1.774 Get:3 http://deb.debian.org/debian buster/main amd64 libgdbm-compat4 amd64 1.18.1-4 [44.1 kB]
+#24 1.775 Get:4 http://deb.debian.org/debian buster/main amd64 libperl5.28 amd64 5.28.1-6+deb10u1 [3894 kB]
+#24 1.944 Get:5 http://deb.debian.org/debian buster/main amd64 perl amd64 5.28.1-6+deb10u1 [204 kB]
+#24 1.955 Get:6 http://deb.debian.org/debian-security buster/updates/main amd64 libssl1.1 amd64 1.1.1n-0+deb10u6 [1552 kB]
+#24 2.012 Get:7 http://deb.debian.org/debian buster/main amd64 netbase all 5.6 [19.4 kB]
+#24 2.014 Get:8 http://deb.debian.org/debian-security buster/updates/main amd64 libncurses6 amd64 6.1+20181013-2+deb10u3 [102 kB]
+#24 2.020 Get:9 http://deb.debian.org/debian buster/main amd64 libprocps7 amd64 2:3.3.15-2 [61.7 kB]
+#24 2.023 Get:10 http://deb.debian.org/debian buster/main amd64 lsb-base all 10.2019051400 [28.4 kB]
+#24 2.024 Get:11 http://deb.debian.org/debian buster/main amd64 procps amd64 2:3.3.15-2 [259 kB]
+#24 2.039 Get:12 http://deb.debian.org/debian buster/main amd64 readline-common all 7.0-5 [70.6 kB]
+#24 2.042 Get:13 http://deb.debian.org/debian buster/main amd64 sensible-utils all 0.0.12 [15.8 kB]
+#24 2.043 Get:14 http://deb.debian.org/debian-security buster/updates/main amd64 bzip2 amd64 1.0.6-9.2~deb10u2 [48.5 kB]
+#24 2.045 Get:15 http://deb.debian.org/debian buster/main amd64 libmagic-mgc amd64 1:5.35-4+deb10u2 [242 kB]
+#24 2.062 Get:16 http://deb.debian.org/debian buster/main amd64 libmagic1 amd64 1:5.35-4+deb10u2 [118 kB]
+#24 2.068 Get:17 http://deb.debian.org/debian buster/main amd64 file amd64 1:5.35-4+deb10u2 [66.4 kB]
+#24 2.073 Get:18 http://deb.debian.org/debian buster/main amd64 libicu63 amd64 63.1-6+deb10u3 [8293 kB]
+#24 2.478 Get:19 http://deb.debian.org/debian-security buster/updates/main amd64 libxml2 amd64 2.9.4+dfsg1-7+deb10u6 [690 kB]
+#24 2.507 Get:20 http://deb.debian.org/debian buster/main amd64 mime-support all 3.62 [37.2 kB]
+#24 2.509 Get:21 http://deb.debian.org/debian buster/main amd64 ucf all 3.0038+nmu1 [69.0 kB]
+#24 2.513 Get:22 http://deb.debian.org/debian buster/main amd64 xz-utils amd64 5.2.4-1+deb10u1 [183 kB]
+#24 2.521 Get:23 http://deb.debian.org/debian buster/main amd64 libaio1 amd64 0.3.112-3 [11.2 kB]
+#24 2.522 Get:24 http://deb.debian.org/debian buster/main amd64 libapparmor1 amd64 2.13.2-10 [94.7 kB]
+#24 2.526 Get:25 http://deb.debian.org/debian buster/main amd64 libargon2-1 amd64 0~20171227-0.2 [19.6 kB]
+#24 2.527 Get:26 http://deb.debian.org/debian buster/main amd64 libbsd0 amd64 0.9.1-2+deb10u1 [99.5 kB]
+#24 2.536 Get:27 http://deb.debian.org/debian buster/main amd64 libconfig-inifiles-perl all 3.000001-1 [51.9 kB]
+#24 2.538 Get:28 http://deb.debian.org/debian buster/main amd64 libdbi-perl amd64 1.642-1+deb10u2 [775 kB]
+#24 2.570 Get:29 http://deb.debian.org/debian buster/main amd64 mysql-common all 5.8+1.0.5 [7324 B]
+#24 2.571 Get:30 http://deb.debian.org/debian-security buster/updates/main amd64 mariadb-common all 1:10.3.39-0+deb10u1 [33.5 kB]
+#24 2.574 Get:31 http://deb.debian.org/debian-security buster/updates/main amd64 libmariadb3 amd64 1:10.3.39-0+deb10u1 [173 kB]
+#24 2.579 Get:32 http://deb.debian.org/debian buster/main amd64 libdbd-mysql-perl amd64 4.050-2 [121 kB]
+#24 2.584 Get:33 http://deb.debian.org/debian buster/main amd64 libedit2 amd64 3.1-20181209-1 [94.0 kB]
+#24 2.588 Get:34 http://deb.debian.org/debian buster/main amd64 libgpm2 amd64 1.20.7-5 [35.1 kB]
+#24 2.594 Get:35 http://deb.debian.org/debian-security buster/updates/main amd64 libpcre2-8-0 amd64 10.32-5+deb10u1 [213 kB]
+#24 2.604 Get:36 http://deb.debian.org/debian buster/main amd64 libreadline5 amd64 5.2+dfsg-3+b13 [120 kB]
+#24 2.610 Get:37 http://deb.debian.org/debian buster/main amd64 libsnappy1v5 amd64 1.1.7-1 [17.0 kB]
+#24 2.610 Get:38 http://deb.debian.org/debian buster/main amd64 libsodium23 amd64 1.0.17-1 [158 kB]
+#24 2.618 Get:39 http://deb.debian.org/debian buster/main amd64 libterm-readkey-perl amd64 2.38-1 [27.4 kB]
+#24 2.620 Get:40 http://deb.debian.org/debian-security buster/updates/main amd64 mariadb-client-core-10.3 amd64 1:10.3.39-0+deb10u1 [5780 kB]
+#24 2.939 Get:41 http://deb.debian.org/debian-security buster/updates/main amd64 mariadb-client-10.3 amd64 1:10.3.39-0+deb10u1 [1144 kB]
+#24 2.996 Get:42 http://deb.debian.org/debian-security buster/updates/main amd64 mariadb-client all 1:10.3.39-0+deb10u1 [32.3 kB]
+#24 3.000 Get:43 http://deb.debian.org/debian buster/main amd64 psmisc amd64 23.2-1+deb10u1 [126 kB]
+#24 3.008 Get:44 http://deb.debian.org/debian buster/main amd64 php-common all 2:69 [15.0 kB]
+#24 3.010 Get:45 http://deb.debian.org/debian-security buster/updates/main amd64 php7.3-common amd64 7.3.31-1~deb10u5 [962 kB]
+#24 3.063 Get:46 http://deb.debian.org/debian-security buster/updates/main amd64 php7.3-json amd64 7.3.31-1~deb10u5 [18.6 kB]
+#24 3.063 Get:47 http://deb.debian.org/debian-security buster/updates/main amd64 php7.3-opcache amd64 7.3.31-1~deb10u5 [184 kB]
+#24 3.071 Get:48 http://deb.debian.org/debian-security buster/updates/main amd64 php7.3-readline amd64 7.3.31-1~deb10u5 [12.0 kB]
+#24 3.073 Get:49 http://deb.debian.org/debian-security buster/updates/main amd64 php7.3-cli amd64 7.3.31-1~deb10u5 [1415 kB]
+#24 3.147 Get:50 http://deb.debian.org/debian-security buster/updates/main amd64 php7.3-fpm amd64 7.3.31-1~deb10u5 [1428 kB]
+#24 3.223 Get:51 http://deb.debian.org/debian buster/main amd64 php-fpm all 2:7.3+69 [6052 B]
+#24 3.224 Get:52 http://deb.debian.org/debian-security buster/updates/main amd64 php7.3-mysql amd64 7.3.31-1~deb10u5 [119 kB]
+#24 3.231 Get:53 http://deb.debian.org/debian buster/main amd64 php-mysql all 2:7.3+69 [5992 B]
+#24 3.231 Get:54 http://deb.debian.org/debian-security buster/updates/main amd64 php7.3 all 7.3.31-1~deb10u5 [47.9 kB]
+#24 3.431 debconf: delaying package configuration, since apt-utils is not installed
+#24 3.462 Fetched 32.3 MB in 2s (15.9 MB/s)
+#24 3.488 Selecting previously unselected package perl-modules-5.28.
+#24 3.488 (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 6686 files and directories currently installed.)
+#24 3.505 Preparing to unpack .../00-perl-modules-5.28_5.28.1-6+deb10u1_all.deb ...
+#24 3.506 Unpacking perl-modules-5.28 (5.28.1-6+deb10u1) ...
+#24 4.006 Selecting previously unselected package libgdbm6:amd64.
+#24 4.007 Preparing to unpack .../01-libgdbm6_1.18.1-4_amd64.deb ...
+#24 4.012 Unpacking libgdbm6:amd64 (1.18.1-4) ...
+#24 4.032 Selecting previously unselected package libgdbm-compat4:amd64.
+#24 4.034 Preparing to unpack .../02-libgdbm-compat4_1.18.1-4_amd64.deb ...
+#24 4.035 Unpacking libgdbm-compat4:amd64 (1.18.1-4) ...
+#24 4.056 Selecting previously unselected package libperl5.28:amd64.
+#24 4.057 Preparing to unpack .../03-libperl5.28_5.28.1-6+deb10u1_amd64.deb ...
+#24 4.059 Unpacking libperl5.28:amd64 (5.28.1-6+deb10u1) ...
+#24 4.484 Selecting previously unselected package perl.
+#24 4.486 Preparing to unpack .../04-perl_5.28.1-6+deb10u1_amd64.deb ...
+#24 4.492 Unpacking perl (5.28.1-6+deb10u1) ...
+#24 4.530 Selecting previously unselected package libssl1.1:amd64.
+#24 4.531 Preparing to unpack .../05-libssl1.1_1.1.1n-0+deb10u6_amd64.deb ...
+#24 4.533 Unpacking libssl1.1:amd64 (1.1.1n-0+deb10u6) ...
+#24 4.638 Selecting previously unselected package netbase.
+#24 4.640 Preparing to unpack .../06-netbase_5.6_all.deb ...
+#24 4.642 Unpacking netbase (5.6) ...
+#24 4.660 Selecting previously unselected package libncurses6:amd64.
+#24 4.661 Preparing to unpack .../07-libncurses6_6.1+20181013-2+deb10u3_amd64.deb ...
+#24 4.663 Unpacking libncurses6:amd64 (6.1+20181013-2+deb10u3) ...
+#24 4.689 Selecting previously unselected package libprocps7:amd64.
+#24 4.690 Preparing to unpack .../08-libprocps7_2%3a3.3.15-2_amd64.deb ...
+#24 4.692 Unpacking libprocps7:amd64 (2:3.3.15-2) ...
+#24 4.710 Selecting previously unselected package lsb-base.
+#24 4.711 Preparing to unpack .../09-lsb-base_10.2019051400_all.deb ...
+#24 4.713 Unpacking lsb-base (10.2019051400) ...
+#24 4.736 Selecting previously unselected package procps.
+#24 4.737 Preparing to unpack .../10-procps_2%3a3.3.15-2_amd64.deb ...
+#24 4.740 Unpacking procps (2:3.3.15-2) ...
+#24 4.779 Selecting previously unselected package readline-common.
+#24 4.780 Preparing to unpack .../11-readline-common_7.0-5_all.deb ...
+#24 4.781 Unpacking readline-common (7.0-5) ...
+#24 4.801 Selecting previously unselected package sensible-utils.
+#24 4.802 Preparing to unpack .../12-sensible-utils_0.0.12_all.deb ...
+#24 4.803 Unpacking sensible-utils (0.0.12) ...
+#24 4.831 Selecting previously unselected package bzip2.
+#24 4.832 Preparing to unpack .../13-bzip2_1.0.6-9.2~deb10u2_amd64.deb ...
+#24 4.834 Unpacking bzip2 (1.0.6-9.2~deb10u2) ...
+#24 4.853 Selecting previously unselected package libmagic-mgc.
+#24 4.854 Preparing to unpack .../14-libmagic-mgc_1%3a5.35-4+deb10u2_amd64.deb ...
+#24 4.856 Unpacking libmagic-mgc (1:5.35-4+deb10u2) ...
+#24 4.903 Selecting previously unselected package libmagic1:amd64.
+#24 4.904 Preparing to unpack .../15-libmagic1_1%3a5.35-4+deb10u2_amd64.deb ...
+#24 4.907 Unpacking libmagic1:amd64 (1:5.35-4+deb10u2) ...
+#24 4.930 Selecting previously unselected package file.
+#24 4.931 Preparing to unpack .../16-file_1%3a5.35-4+deb10u2_amd64.deb ...
+#24 4.932 Unpacking file (1:5.35-4+deb10u2) ...
+#24 4.954 Selecting previously unselected package libicu63:amd64.
+#24 4.955 Preparing to unpack .../17-libicu63_63.1-6+deb10u3_amd64.deb ...
+#24 4.957 Unpacking libicu63:amd64 (63.1-6+deb10u3) ...
+#24 5.601 Selecting previously unselected package libxml2:amd64.
+#24 5.602 Preparing to unpack .../18-libxml2_2.9.4+dfsg1-7+deb10u6_amd64.deb ...
+#24 5.603 Unpacking libxml2:amd64 (2.9.4+dfsg1-7+deb10u6) ...
+#24 5.665 Selecting previously unselected package mime-support.
+#24 5.666 Preparing to unpack .../19-mime-support_3.62_all.deb ...
+#24 5.667 Unpacking mime-support (3.62) ...
+#24 5.694 Selecting previously unselected package ucf.
+#24 5.695 Preparing to unpack .../20-ucf_3.0038+nmu1_all.deb ...
+#24 5.698 Moving old data out of the way
+#24 5.700 Unpacking ucf (3.0038+nmu1) ...
+#24 5.722 Selecting previously unselected package xz-utils.
+#24 5.723 Preparing to unpack .../21-xz-utils_5.2.4-1+deb10u1_amd64.deb ...
+#24 5.725 Unpacking xz-utils (5.2.4-1+deb10u1) ...
+#24 5.762 Selecting previously unselected package libaio1:amd64.
+#24 5.763 Preparing to unpack .../22-libaio1_0.3.112-3_amd64.deb ...
+#24 5.765 Unpacking libaio1:amd64 (0.3.112-3) ...
+#24 5.784 Selecting previously unselected package libapparmor1:amd64.
+#24 5.785 Preparing to unpack .../23-libapparmor1_2.13.2-10_amd64.deb ...
+#24 5.787 Unpacking libapparmor1:amd64 (2.13.2-10) ...
+#24 5.811 Selecting previously unselected package libargon2-1:amd64.
+#24 5.813 Preparing to unpack .../24-libargon2-1_0~20171227-0.2_amd64.deb ...
+#24 5.814 Unpacking libargon2-1:amd64 (0~20171227-0.2) ...
+#24 5.835 Selecting previously unselected package libbsd0:amd64.
+#24 5.836 Preparing to unpack .../25-libbsd0_0.9.1-2+deb10u1_amd64.deb ...
+#24 5.838 Unpacking libbsd0:amd64 (0.9.1-2+deb10u1) ...
+#24 5.860 Selecting previously unselected package libconfig-inifiles-perl.
+#24 5.861 Preparing to unpack .../26-libconfig-inifiles-perl_3.000001-1_all.deb ...
+#24 5.863 Unpacking libconfig-inifiles-perl (3.000001-1) ...
+#24 5.881 Selecting previously unselected package libdbi-perl:amd64.
+#24 5.882 Preparing to unpack .../27-libdbi-perl_1.642-1+deb10u2_amd64.deb ...
+#24 5.884 Unpacking libdbi-perl:amd64 (1.642-1+deb10u2) ...
+#24 5.958 Selecting previously unselected package mysql-common.
+#24 5.959 Preparing to unpack .../28-mysql-common_5.8+1.0.5_all.deb ...
+#24 5.970 Unpacking mysql-common (5.8+1.0.5) ...
+#24 5.989 Selecting previously unselected package mariadb-common.
+#24 5.990 Preparing to unpack .../29-mariadb-common_1%3a10.3.39-0+deb10u1_all.deb ...
+#24 5.994 Unpacking mariadb-common (1:10.3.39-0+deb10u1) ...
+#24 6.013 Selecting previously unselected package libmariadb3:amd64.
+#24 6.014 Preparing to unpack .../30-libmariadb3_1%3a10.3.39-0+deb10u1_amd64.deb ...
+#24 6.016 Unpacking libmariadb3:amd64 (1:10.3.39-0+deb10u1) ...
+#24 6.043 Selecting previously unselected package libdbd-mysql-perl:amd64.
+#24 6.044 Preparing to unpack .../31-libdbd-mysql-perl_4.050-2_amd64.deb ...
+#24 6.047 Unpacking libdbd-mysql-perl:amd64 (4.050-2) ...
+#24 6.071 Selecting previously unselected package libedit2:amd64.
+#24 6.072 Preparing to unpack .../32-libedit2_3.1-20181209-1_amd64.deb ...
+#24 6.073 Unpacking libedit2:amd64 (3.1-20181209-1) ...
+#24 6.100 Selecting previously unselected package libgpm2:amd64.
+#24 6.101 Preparing to unpack .../33-libgpm2_1.20.7-5_amd64.deb ...
+#24 6.103 Unpacking libgpm2:amd64 (1.20.7-5) ...
+#24 6.124 Selecting previously unselected package libpcre2-8-0:amd64.
+#24 6.125 Preparing to unpack .../34-libpcre2-8-0_10.32-5+deb10u1_amd64.deb ...
+#24 6.126 Unpacking libpcre2-8-0:amd64 (10.32-5+deb10u1) ...
+#24 6.136 Selecting previously unselected package libreadline5:amd64.
+#24 6.137 Preparing to unpack .../35-libreadline5_5.2+dfsg-3+b13_amd64.deb ...
+#24 6.139 Unpacking libreadline5:amd64 (5.2+dfsg-3+b13) ...
+#24 6.164 Selecting previously unselected package libsnappy1v5:amd64.
+#24 6.164 Preparing to unpack .../36-libsnappy1v5_1.1.7-1_amd64.deb ...
+#24 6.167 Unpacking libsnappy1v5:amd64 (1.1.7-1) ...
+#24 6.184 Selecting previously unselected package libsodium23:amd64.
+#24 6.185 Preparing to unpack .../37-libsodium23_1.0.17-1_amd64.deb ...
+#24 6.187 Unpacking libsodium23:amd64 (1.0.17-1) ...
+#24 6.210 Selecting previously unselected package libterm-readkey-perl.
+#24 6.211 Preparing to unpack .../38-libterm-readkey-perl_2.38-1_amd64.deb ...
+#24 6.213 Unpacking libterm-readkey-perl (2.38-1) ...
+#24 6.231 Selecting previously unselected package mariadb-client-core-10.3.
+#24 6.231 Preparing to unpack .../39-mariadb-client-core-10.3_1%3a10.3.39-0+deb10u1_amd64.deb ...
+#24 6.233 Unpacking mariadb-client-core-10.3 (1:10.3.39-0+deb10u1) ...
+#24 6.690 Selecting previously unselected package mariadb-client-10.3.
+#24 6.691 Preparing to unpack .../40-mariadb-client-10.3_1%3a10.3.39-0+deb10u1_amd64.deb ...
+#24 6.692 Unpacking mariadb-client-10.3 (1:10.3.39-0+deb10u1) ...
+#24 6.887 Selecting previously unselected package mariadb-client.
+#24 6.888 Preparing to unpack .../41-mariadb-client_1%3a10.3.39-0+deb10u1_all.deb ...
+#24 6.889 Unpacking mariadb-client (1:10.3.39-0+deb10u1) ...
+#24 6.906 Selecting previously unselected package psmisc.
+#24 6.907 Preparing to unpack .../42-psmisc_23.2-1+deb10u1_amd64.deb ...
+#24 6.909 Unpacking psmisc (23.2-1+deb10u1) ...
+#24 6.966 Selecting previously unselected package php-common.
+#24 6.967 Preparing to unpack .../43-php-common_2%3a69_all.deb ...
+#24 6.969 Unpacking php-common (2:69) ...
+#24 6.991 Selecting previously unselected package php7.3-common.
+#24 6.992 Preparing to unpack .../44-php7.3-common_7.3.31-1~deb10u5_amd64.deb ...
+#24 6.995 Unpacking php7.3-common (7.3.31-1~deb10u5) ...
+#24 7.082 Selecting previously unselected package php7.3-json.
+#24 7.083 Preparing to unpack .../45-php7.3-json_7.3.31-1~deb10u5_amd64.deb ...
+#24 7.086 Unpacking php7.3-json (7.3.31-1~deb10u5) ...
+#24 7.106 Selecting previously unselected package php7.3-opcache.
+#24 7.108 Preparing to unpack .../46-php7.3-opcache_7.3.31-1~deb10u5_amd64.deb ...
+#24 7.111 Unpacking php7.3-opcache (7.3.31-1~deb10u5) ...
+#24 7.147 Selecting previously unselected package php7.3-readline.
+#24 7.148 Preparing to unpack .../47-php7.3-readline_7.3.31-1~deb10u5_amd64.deb ...
+#24 7.151 Unpacking php7.3-readline (7.3.31-1~deb10u5) ...
+#24 7.169 Selecting previously unselected package php7.3-cli.
+#24 7.170 Preparing to unpack .../48-php7.3-cli_7.3.31-1~deb10u5_amd64.deb ...
+#24 7.173 Unpacking php7.3-cli (7.3.31-1~deb10u5) ...
+#24 7.302 Selecting previously unselected package php7.3-fpm.
+#24 7.303 Preparing to unpack .../49-php7.3-fpm_7.3.31-1~deb10u5_amd64.deb ...
+#24 7.304 Unpacking php7.3-fpm (7.3.31-1~deb10u5) ...
+#24 7.441 Selecting previously unselected package php-fpm.
+#24 7.442 Preparing to unpack .../50-php-fpm_2%3a7.3+69_all.deb ...
+#24 7.444 Unpacking php-fpm (2:7.3+69) ...
+#24 7.461 Selecting previously unselected package php7.3-mysql.
+#24 7.462 Preparing to unpack .../51-php7.3-mysql_7.3.31-1~deb10u5_amd64.deb ...
+#24 7.464 Unpacking php7.3-mysql (7.3.31-1~deb10u5) ...
+#24 7.491 Selecting previously unselected package php-mysql.
+#24 7.492 Preparing to unpack .../52-php-mysql_2%3a7.3+69_all.deb ...
+#24 7.493 Unpacking php-mysql (2:7.3+69) ...
+#24 7.509 Selecting previously unselected package php7.3.
+#24 7.510 Preparing to unpack .../53-php7.3_7.3.31-1~deb10u5_all.deb ...
+#24 7.512 Unpacking php7.3 (7.3.31-1~deb10u5) ...
+#24 7.537 Setting up perl-modules-5.28 (5.28.1-6+deb10u1) ...
+#24 7.542 Setting up libconfig-inifiles-perl (3.000001-1) ...
+#24 7.546 Setting up lsb-base (10.2019051400) ...
+#24 7.551 Setting up mysql-common (5.8+1.0.5) ...
+#24 7.569 update-alternatives: using /etc/mysql/my.cnf.fallback to provide /etc/mysql/my.cnf (my.cnf) in auto mode
+#24 7.572 Setting up libapparmor1:amd64 (2.13.2-10) ...
+#24 7.577 Setting up libsodium23:amd64 (1.0.17-1) ...
+#24 7.584 Setting up libgpm2:amd64 (1.20.7-5) ...
+#24 7.588 Setting up mime-support (3.62) ...
+#24 7.604 Setting up libmagic-mgc (1:5.35-4+deb10u2) ...
+#24 7.609 Setting up psmisc (23.2-1+deb10u1) ...
+#24 7.615 Setting up libssl1.1:amd64 (1.1.1n-0+deb10u6) ...
+#24 7.673 debconf: unable to initialize frontend: Dialog
+#24 7.673 debconf: (TERM is not set, so the dialog frontend is not usable.)
+#24 7.673 debconf: falling back to frontend: Readline
+#24 7.702 Setting up libargon2-1:amd64 (0~20171227-0.2) ...
+#24 7.710 Setting up libprocps7:amd64 (2:3.3.15-2) ...
+#24 7.714 Setting up libmagic1:amd64 (1:5.35-4+deb10u2) ...
+#24 7.720 Setting up file (1:5.35-4+deb10u2) ...
+#24 7.724 Setting up bzip2 (1.0.6-9.2~deb10u2) ...
+#24 7.729 Setting up libicu63:amd64 (63.1-6+deb10u3) ...
+#24 7.734 Setting up libsnappy1v5:amd64 (1.1.7-1) ...
+#24 7.738 Setting up mariadb-common (1:10.3.39-0+deb10u1) ...
+#24 7.744 update-alternatives: using /etc/mysql/mariadb.cnf to provide /etc/mysql/my.cnf (my.cnf) in auto mode
+#24 7.748 Setting up libncurses6:amd64 (6.1+20181013-2+deb10u3) ...
+#24 7.753 Setting up xz-utils (5.2.4-1+deb10u1) ...
+#24 7.758 update-alternatives: using /usr/bin/xz to provide /usr/bin/lzma (lzma) in auto mode
+#24 7.765 Setting up libmariadb3:amd64 (1:10.3.39-0+deb10u1) ...
+#24 7.769 Setting up libpcre2-8-0:amd64 (10.32-5+deb10u1) ...
+#24 7.773 Setting up sensible-utils (0.0.12) ...
+#24 7.779 Setting up procps (2:3.3.15-2) ...
+#24 7.793 update-alternatives: using /usr/bin/w.procps to provide /usr/bin/w (w) in auto mode
+#24 7.806 Setting up netbase (5.6) ...
+#24 7.817 Setting up libaio1:amd64 (0.3.112-3) ...
+#24 7.820 Setting up libbsd0:amd64 (0.9.1-2+deb10u1) ...
+#24 7.825 Setting up readline-common (7.0-5) ...
+#24 7.833 Setting up libxml2:amd64 (2.9.4+dfsg1-7+deb10u6) ...
+#24 7.837 Setting up libgdbm6:amd64 (1.18.1-4) ...
+#24 7.841 Setting up php-common (2:69) ...
+#24 7.950 Setting up libreadline5:amd64 (5.2+dfsg-3+b13) ...
+#24 7.955 Setting up libedit2:amd64 (3.1-20181209-1) ...
+#24 7.958 Setting up libgdbm-compat4:amd64 (1.18.1-4) ...
+#24 7.962 Setting up ucf (3.0038+nmu1) ...
+#24 8.036 debconf: unable to initialize frontend: Dialog
+#24 8.036 debconf: (TERM is not set, so the dialog frontend is not usable.)
+#24 8.036 debconf: falling back to frontend: Readline
+#24 8.068 Setting up libperl5.28:amd64 (5.28.1-6+deb10u1) ...
+#24 8.072 Setting up mariadb-client-core-10.3 (1:10.3.39-0+deb10u1) ...
+#24 8.076 Setting up perl (5.28.1-6+deb10u1) ...
+#24 8.088 Setting up php7.3-common (7.3.31-1~deb10u5) ...
+#24 8.166 debconf: unable to initialize frontend: Dialog
+#24 8.166 debconf: (TERM is not set, so the dialog frontend is not usable.)
+#24 8.166 debconf: falling back to frontend: Readline
+#24 8.204 
+#24 8.204 Creating config file /etc/php/7.3/mods-available/calendar.ini with new version
+#24 8.381 debconf: unable to initialize frontend: Dialog
+#24 8.381 debconf: (TERM is not set, so the dialog frontend is not usable.)
+#24 8.381 debconf: falling back to frontend: Readline
+#24 8.420 
+#24 8.420 Creating config file /etc/php/7.3/mods-available/ctype.ini with new version
+#24 8.594 debconf: unable to initialize frontend: Dialog
+#24 8.594 debconf: (TERM is not set, so the dialog frontend is not usable.)
+#24 8.594 debconf: falling back to frontend: Readline
+#24 8.632 
+#24 8.632 Creating config file /etc/php/7.3/mods-available/exif.ini with new version
+#24 8.804 debconf: unable to initialize frontend: Dialog
+#24 8.804 debconf: (TERM is not set, so the dialog frontend is not usable.)
+#24 8.804 debconf: falling back to frontend: Readline
+#24 8.842 
+#24 8.842 Creating config file /etc/php/7.3/mods-available/fileinfo.ini with new version
+#24 9.017 debconf: unable to initialize frontend: Dialog
+#24 9.017 debconf: (TERM is not set, so the dialog frontend is not usable.)
+#24 9.017 debconf: falling back to frontend: Readline
+#24 9.055 
+#24 9.055 Creating config file /etc/php/7.3/mods-available/ftp.ini with new version
+#24 9.229 debconf: unable to initialize frontend: Dialog
+#24 9.229 debconf: (TERM is not set, so the dialog frontend is not usable.)
+#24 9.229 debconf: falling back to frontend: Readline
+#24 9.267 
+#24 9.267 Creating config file /etc/php/7.3/mods-available/gettext.ini with new version
+#24 9.445 debconf: unable to initialize frontend: Dialog
+#24 9.445 debconf: (TERM is not set, so the dialog frontend is not usable.)
+#24 9.445 debconf: falling back to frontend: Readline
+#24 9.483 
+#24 9.483 Creating config file /etc/php/7.3/mods-available/iconv.ini with new version
+#24 9.663 debconf: unable to initialize frontend: Dialog
+#24 9.663 debconf: (TERM is not set, so the dialog frontend is not usable.)
+#24 9.663 debconf: falling back to frontend: Readline
+#24 9.704 
+#24 9.704 Creating config file /etc/php/7.3/mods-available/pdo.ini with new version
+#24 9.888 debconf: unable to initialize frontend: Dialog
+#24 9.888 debconf: (TERM is not set, so the dialog frontend is not usable.)
+#24 9.889 debconf: falling back to frontend: Readline
+#24 9.927 
+#24 9.927 Creating config file /etc/php/7.3/mods-available/phar.ini with new version
+#24 10.11 debconf: unable to initialize frontend: Dialog
+#24 10.11 debconf: (TERM is not set, so the dialog frontend is not usable.)
+#24 10.11 debconf: falling back to frontend: Readline
+#24 10.15 
+#24 10.15 Creating config file /etc/php/7.3/mods-available/posix.ini with new version
+#24 10.33 debconf: unable to initialize frontend: Dialog
+#24 10.33 debconf: (TERM is not set, so the dialog frontend is not usable.)
+#24 10.33 debconf: falling back to frontend: Readline
+#24 10.37 
+#24 10.37 Creating config file /etc/php/7.3/mods-available/shmop.ini with new version
+#24 10.55 debconf: unable to initialize frontend: Dialog
+#24 10.55 debconf: (TERM is not set, so the dialog frontend is not usable.)
+#24 10.55 debconf: falling back to frontend: Readline
+#24 10.59 
+#24 10.59 Creating config file /etc/php/7.3/mods-available/sockets.ini with new version
+#24 10.78 debconf: unable to initialize frontend: Dialog
+#24 10.78 debconf: (TERM is not set, so the dialog frontend is not usable.)
+#24 10.78 debconf: falling back to frontend: Readline
+#24 10.82 
+#24 10.82 Creating config file /etc/php/7.3/mods-available/sysvmsg.ini with new version
+#24 11.01 debconf: unable to initialize frontend: Dialog
+#24 11.01 debconf: (TERM is not set, so the dialog frontend is not usable.)
+#24 11.01 debconf: falling back to frontend: Readline
+#24 11.04 
+#24 11.04 Creating config file /etc/php/7.3/mods-available/sysvsem.ini with new version
+#24 11.23 debconf: unable to initialize frontend: Dialog
+#24 11.23 debconf: (TERM is not set, so the dialog frontend is not usable.)
+#24 11.23 debconf: falling back to frontend: Readline
+#24 11.26 
+#24 11.26 Creating config file /etc/php/7.3/mods-available/sysvshm.ini with new version
+#24 11.44 debconf: unable to initialize frontend: Dialog
+#24 11.44 debconf: (TERM is not set, so the dialog frontend is not usable.)
+#24 11.44 debconf: falling back to frontend: Readline
+#24 11.48 
+#24 11.48 Creating config file /etc/php/7.3/mods-available/tokenizer.ini with new version
+#24 11.60 Setting up mariadb-client-10.3 (1:10.3.39-0+deb10u1) ...
+#24 11.61 Setting up php7.3-mysql (7.3.31-1~deb10u5) ...
+#24 11.68 debconf: unable to initialize frontend: Dialog
+#24 11.68 debconf: (TERM is not set, so the dialog frontend is not usable.)
+#24 11.68 debconf: falling back to frontend: Readline
+#24 11.73 
+#24 11.73 Creating config file /etc/php/7.3/mods-available/mysqlnd.ini with new version
+#24 11.92 debconf: unable to initialize frontend: Dialog
+#24 11.92 debconf: (TERM is not set, so the dialog frontend is not usable.)
+#24 11.92 debconf: falling back to frontend: Readline
+#24 11.96 
+#24 11.96 Creating config file /etc/php/7.3/mods-available/mysqli.ini with new version
+#24 12.15 debconf: unable to initialize frontend: Dialog
+#24 12.15 debconf: (TERM is not set, so the dialog frontend is not usable.)
+#24 12.15 debconf: falling back to frontend: Readline
+#24 12.19 
+#24 12.19 Creating config file /etc/php/7.3/mods-available/pdo_mysql.ini with new version
+#24 12.31 Setting up php7.3-opcache (7.3.31-1~deb10u5) ...
+#24 12.39 debconf: unable to initialize frontend: Dialog
+#24 12.39 debconf: (TERM is not set, so the dialog frontend is not usable.)
+#24 12.39 debconf: falling back to frontend: Readline
+#24 12.43 
+#24 12.43 Creating config file /etc/php/7.3/mods-available/opcache.ini with new version
+#24 12.54 Setting up libterm-readkey-perl (2.38-1) ...
+#24 12.55 Setting up libdbi-perl:amd64 (1.642-1+deb10u2) ...
+#24 12.55 Setting up php-mysql (2:7.3+69) ...
+#24 12.56 Setting up mariadb-client (1:10.3.39-0+deb10u1) ...
+#24 12.56 Setting up php7.3-json (7.3.31-1~deb10u5) ...
+#24 12.64 debconf: unable to initialize frontend: Dialog
+#24 12.64 debconf: (TERM is not set, so the dialog frontend is not usable.)
+#24 12.64 debconf: falling back to frontend: Readline
+#24 12.68 
+#24 12.68 Creating config file /etc/php/7.3/mods-available/json.ini with new version
+#24 12.83 Setting up php7.3-readline (7.3.31-1~deb10u5) ...
+#24 12.95 debconf: unable to initialize frontend: Dialog
+#24 12.95 debconf: (TERM is not set, so the dialog frontend is not usable.)
+#24 12.95 debconf: falling back to frontend: Readline
+#24 12.99 
+#24 12.99 Creating config file /etc/php/7.3/mods-available/readline.ini with new version
+#24 13.11 Setting up libdbd-mysql-perl:amd64 (4.050-2) ...
+#24 13.12 Setting up php7.3-cli (7.3.31-1~deb10u5) ...
+#24 13.13 update-alternatives: using /usr/bin/php7.3 to provide /usr/bin/php (php) in auto mode
+#24 13.13 update-alternatives: using /usr/bin/phar7.3 to provide /usr/bin/phar (phar) in auto mode
+#24 13.13 update-alternatives: using /usr/bin/phar.phar7.3 to provide /usr/bin/phar.phar (phar.phar) in auto mode
+#24 13.20 debconf: unable to initialize frontend: Dialog
+#24 13.20 debconf: (TERM is not set, so the dialog frontend is not usable.)
+#24 13.20 debconf: falling back to frontend: Readline
+#24 13.24 
+#24 13.24 Creating config file /etc/php/7.3/cli/php.ini with new version
+#24 13.63 Setting up php7.3-fpm (7.3.31-1~deb10u5) ...
+#24 13.72 debconf: unable to initialize frontend: Dialog
+#24 13.72 debconf: (TERM is not set, so the dialog frontend is not usable.)
+#24 13.72 debconf: falling back to frontend: Readline
+#24 13.76 
+#24 13.76 Creating config file /etc/php/7.3/fpm/php.ini with new version
+#24 14.25 invoke-rc.d: could not determine current runlevel
+#24 14.25 invoke-rc.d: policy-rc.d denied execution of start.
+#24 14.26 Setting up php7.3 (7.3.31-1~deb10u5) ...
+#24 14.26 Setting up php-fpm (2:7.3+69) ...
+#24 14.26 Processing triggers for libc-bin (2.28-10+deb10u2) ...
+#24 DONE 14.5s
+
+#25 [wordpress:inception 4/5] COPY ./conf/auto_config.sh /var/www/
+#25 DONE 0.0s
+
+#26 [wordpress:inception 5/5] RUN chmod +x /var/www/auto_config.sh
+#26 DONE 0.2s
+
+#23 [wordpress:inception] exporting to image
+#23 exporting layers
+#23 exporting layers 0.7s done
+#23 writing image sha256:d40ac231cc8459c5e0d7ca4df615fc89bde23dfebb560f82ab715740254ed0d7 done
+#23 naming to docker.io/library/wordpress:inception done
+#23 DONE 0.8s

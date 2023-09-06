@@ -1,17 +1,30 @@
 #!/bin/bash
-service mysql start
-mysql -e "CREATE DATABASE IF NOT EXISTS $SQL_DATABASE";
-mysql -e "CREATE USER IF NOT EXISTS '$SQL_USER'@'%' IDENTIFIED BY '$SQL_PASSWORD'" ;
-mysql -e "GRANT ALL ON $SQL_DATABASE.* TO '$SQL_USER'@'%'" ;
-mysql -e "FLUSH PRIVILEGES;"
-mysql -e "alter user 'root'@'localhost' identified by '$MYSQL_ROOT_PASSWORD';" ;
-mysql -e "FLUSH PRIVILEGES;"
 
-service mysql stop
-# kill 
+# starting the mysql service
+service mysql start
+
+# change the bind to 0.0.0.0 only accept client connections made to 0.0.0.0 (accept connection to any address)
+# sed -i 's/bind-address= 127.0.0.1/bind-address = 0.0.0.0/g' /etc/mysql/mariadb.conf.d/50-server.cnf
+
+# create the database if not exist
+mysql -u root -p $MYSQL_ROOT_PASSWORD -e "CREATE DATABASE IF NOT EXISTS $SQL_DATABASE;"
+
+# create the user if not exist
+mysql -u root -p $MYSQL_ROOT_PASSWORD -e "CREATE USER IF NOT EXISTS '$SQL_USER'@'%' IDENTIFIED BY '$SQL_PASSWORD';"
+
+# grant all priviliges on the created database to the user
+mysql -u root -p $MYSQL_ROOT_PASSWORD-e "GRANT ALL PRIVILEGES ON $SQL_DATABASE.* TO '$SQL_USER'@'%';"
+
+# this command tell the MySQL or MariaDB server to reload the grant tables and update its internal data structures with the current contents of the grant tables.
+mysql -u root -p $MYSQL_ROOT_PASSWORD -e "FLUSH PRIVILEGES;"
+
+# set the password to the root
+mysql -u root -p $MYSQL_ROOT_PASSWORD-e "ALTER USER 'root'@'localhost' IDENTIFIED BY '$MYSQL_ROOT_PASSWORD';"
+
+# killing the porcess of mysqld to not restarting while waiting the wordpress to get setup
+kill `cat /var/run/mysqld/mysqld.pid`
 
 exec "$@"
-
 
 #FLUSH PRIVILEGES ---> Plus qu’à rafraichir tout cela pour que MySQL le prenne en compte.
 
