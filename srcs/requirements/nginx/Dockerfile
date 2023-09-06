@@ -1,7 +1,6 @@
 FROM debian:buster
 RUN apt update
 RUN apt upgrade && apt install nginx -y
-COPY ./tools/index.html /var/www/html/
 RUN mkdir -p /etc/nginx/ssl
 RUN apt install openssl -y
 COPY ./tools/inception.sh /var/www
