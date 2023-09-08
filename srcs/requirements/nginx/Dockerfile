@@ -6,7 +6,6 @@ RUN apt install openssl -y
 COPY ./tools/inception.sh /var/www
 COPY ./conf/nginx.conf /etc/nginx/sites-enabled/default
 RUN chmod +x /var/www/inception.sh
-EXPOSE 80
-# ENTRYPOINT [ "/var/www/inception.sh" ]
-# CMD [ "nginx", "-g", "daemon off;" ]
+ENTRYPOINT [ "/var/www/inception.sh" ]
+CMD [ "nginx", "-g", "daemon off;" ]
 

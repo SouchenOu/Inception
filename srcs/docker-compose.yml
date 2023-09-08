@@ -44,7 +44,7 @@ services:
     image: nginx:inception
     volumes: ["./:/var/www/html"]
     ports:
-      - 443:443
+      - 8080:8080
     depends_on:
       - wordpress
     build: ./requirements/nginx
