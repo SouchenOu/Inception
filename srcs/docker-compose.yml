@@ -1,49 +1,52 @@
 version: "3"
-# volumes:
-#   mariadb:
-#     driver: local
-#     driver_opts:
-#       o: bind
-#       type: 'none'
-#       device: /Users/souchen/data/mariadb
-#   wordpress:
-#     driver: local
-#     driver_opts:
-#       type: 'none'
-#       o: bind
-#       device: /Users/souchen/data/mariadb
+volumes:
+  mariadb:
+    driver: local
+    driver_opts:
+      o: bind
+      type: 'none'
+      device: /Users/souchen/data/mariadb
+  wordpress:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: bind
+      device: /Users/souchen/data/mariadb
 
 services:
-  # mariadb:
-  #   container_name: mariadb
-  #   image: mariadb:inception
-  #   ports:
-  #     - 3360:3360
-  #   build: ./requirements/mariadb
-  #   env_file: 
-  #     - .env
-  #   volumes:
-  #     - mysql_vol:/var/lib/mysql
-  #   restart: unless-stopped 
+  mariadb:
+    container_name: mariadb
+    image: mariadb:inception
+    ports:
+      - 3306:3306
+    build: ./requirements/mariadb
+    env_file: 
+      - .env
+    volumes:
+      - mariadb:/var/lib/mysql
+    restart: unless-stopped 
 
-  # wordpress:
-  #   container_name: wordpress
-  #   image: wordpress:inception
-  #   env_file: 
-  #     - .env
-  #   ports:
-  #     - 9000:9000
-  #   volumes: ["./:/var/www/html"]
-  #   build: ./requirements/wordpress
-  #   depends_on:
-  #     - mariadb
-  #   restart: on-failure
+  wordpress:
+    container_name: wordpress
+    image: wordpress:inception
+    env_file: 
+      - .env
+    ports:
+      - 9000:9000
+    volumes:
+      - wordpress:/var/www/html
+    build: ./requirements/wordpress
+    depends_on:
+      - mariadb
+    restart: on-failure
 
   nginx:
     container_name: nginx
     image: nginx:inception
     ports:
-      - "8000:80"
+      - 443:443
+    volumes:
+      - wordpress:/var/www/html
     build: ./requirements/nginx
     env_file: 
       - .env
