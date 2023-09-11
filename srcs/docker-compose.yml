@@ -14,46 +14,40 @@ version: "3"
 #       device: /Users/souchen/data/mariadb
 
 services:
-  mariadb:
-    container_name: mariadb
-    image: mariadb:inception
-    ports:
-      - 3360:3360
-    build: ./requirements/mariadb
-    env_file: 
-      - .env
-    volumes:
-      - mysql_vol:/var/lib/mysql
-    restart: unless-stopped 
+  # mariadb:
+  #   container_name: mariadb
+  #   image: mariadb:inception
+  #   ports:
+  #     - 3360:3360
+  #   build: ./requirements/mariadb
+  #   env_file: 
+  #     - .env
+  #   volumes:
+  #     - mysql_vol:/var/lib/mysql
+  #   restart: unless-stopped 
 
-  wordpress:
-    container_name: wordpress
-    image: wordpress:inception
-    env_file: 
-      - .env
-    ports:
-      - 9000:9000
-    volumes: ["./:/var/www/html"]
-    build: ./requirements/wordpress
-    depends_on:
-      - mariadb
-    restart: on-failure
+  # wordpress:
+  #   container_name: wordpress
+  #   image: wordpress:inception
+  #   env_file: 
+  #     - .env
+  #   ports:
+  #     - 9000:9000
+  #   volumes: ["./:/var/www/html"]
+  #   build: ./requirements/wordpress
+  #   depends_on:
+  #     - mariadb
+  #   restart: on-failure
 
   nginx:
     container_name: nginx
     image: nginx:inception
-    volumes: ["./:/var/www/html"]
     ports:
-      - 8080:8080
-    depends_on:
-      - wordpress
+      - "8000:80"
     build: ./requirements/nginx
     env_file: 
       - .env
     restart: on-failure 
-
-volumes:
-    mysql_vol: {}
   
   
     
