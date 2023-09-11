@@ -5,13 +5,13 @@ volumes:
     driver_opts:
       o: bind
       type: 'none'
-      device: /Users/souchen/data/mariadb
+      device: /Users/souchen/data/db
   wordpress:
     driver: local
     driver_opts:
       type: 'none'
       o: bind
-      device: /Users/souchen/data/mariadb
+      device: /Users/souchen/data/wp
 
 services:
   mariadb:
@@ -50,9 +50,11 @@ services:
     build: ./requirements/nginx
     env_file: 
       - .env
+    depends_on:
+      - wordpress
     restart: on-failure 
   
-  
+
     
 
 

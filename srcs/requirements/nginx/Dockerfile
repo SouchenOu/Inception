@@ -9,6 +9,6 @@ COPY ./conf/nginx.conf /etc/nginx/sites-enabled/default
 RUN chmod +x /var/www/inception.sh
 ENTRYPOINT [ "/var/www/inception.sh" ]
 # COPY tools/index.html /var/www/html
-EXPOSE 80
 CMD [ "nginx", "-g", "daemon off;" ]
+
 
