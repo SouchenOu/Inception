@@ -1,6 +1,10 @@
 #!/bin/bash
 openssl req -x509 -nodes -out /etc/nginx/ssl/inception.crt -keyout /etc/nginx/ssl/inception.key -subj "/C=MR/ST=Khouribga/L=Khouribga/O=1337/OU=1337/CN=souchen.42.fr/UID=souchen"
 
+
+# so now on a create our cle or our certificate SSL  
+
+
 # openssl is the command for running OpenSSl
 # req is the OpenSSL utility for generating a CSR(Certificate signing request).
 # Nous rajouterons ensuite le mot clef -x509 pour préciser le type du certificat.
@@ -24,5 +28,4 @@ openssl req -x509 -nodes -out /etc/nginx/ssl/inception.crt -keyout /etc/nginx/ss
 # /O: Organization Name (eg, company)
 # /OU: Organizational Unit Name (eg, section)
 # /CN: Common Name (eg, your name or your server's hostname)
-sleep 1000;
 exec "$@"
