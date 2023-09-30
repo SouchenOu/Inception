@@ -6,7 +6,7 @@ mysql -u root "GRANT ALL PRIVILEGES ON *.* TO '$SQL_USER'@'%';" ;
 mysql -u root "FLUSH PRIVILEGES;"
 mysql -u root "alter user 'root'@'localhost' identified by '$MYSQL_ROOT_PASSWORD';" ;
 mysql -u root "FLUSH PRIVILEGES;"
-# kill `cat /var/run/mysqld/mysqld.pid`
+kill `cat /var/run/mysqld/mysqld.pid`
 mysqld
 
 
