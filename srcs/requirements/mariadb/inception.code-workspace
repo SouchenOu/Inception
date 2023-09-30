@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "../../.."
+		},
+		{
+			"path": "../../../../inc/srcs/requirements/nginx"
+		},
+		{
+			"path": "../../../../inc"
+		}
+	],
+	"settings": {}
+}
