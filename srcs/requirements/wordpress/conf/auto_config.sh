@@ -16,8 +16,8 @@
 	cp /var/www/html/wp-config-sample.php /var/www/html/wp-config.php;
 
 
-	# wp core install --allow-root --url=$URL --title=$TITLE --admin_user=$ADMIN_USER --admin_password=$ADMIN_PSSWRD --admin_email=$ADMIN_EMAIL
-	# wp user create --allow-root ${SQL_USER} ${USER_EMAIL} --user_pass=${SQL_PASSWORD};
+	wp core install --allow-root --url=$URL --title=$TITLE --admin_user=$ADMIN_USER --admin_password=$ADMIN_PSSWRD --admin_email=$ADMIN_EMAIL
+	wp user create --allow-root ${SQL_USER} ${USER_EMAIL} --user_pass=${SQL_PASSWORD};
 	echo "successful !"
  
 exec "$@"

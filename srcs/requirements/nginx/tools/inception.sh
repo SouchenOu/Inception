@@ -1,9 +1,9 @@
 #!/bin/bash
-openssl req -x509 -nodes -out /etc/nginx/ssl/inception.crt -keyout /etc/nginx/ssl/inception.key -subj "/C=MO/ST=khouribga/L=khouribga/O=inception/CN=souchen.42.fr"
+openssl req -x509 -nodes -out /etc/nginx/ssl/inception.crt -keyout /etc/nginx/ssl/inception.key -subj "/C=MA/ST=khouribga/L=khouribga/O=inception/CN=souchen.42.fr"
 
 sed -i "s/etc\/nginx\/ssl\/inception.crt/${nginx_crt}/g" "/etc/nginx/sites-enabled/default"
 sed -i "s/etc\/nginx\/ssl\/inception.key/${nginx_key}/g" "/etc/nginx/sites-enabled/default"
-# sed -i "s/souchen.42.fr/${domain_name}/g" "/etc/nginx/sites-enabled/default"
+sed -i "s/souchen.42.fr/${domain_name}/g" "/etc/nginx/sites-enabled/default"
 
 # so now on a create our cle or our certificate SSL  
 

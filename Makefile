@@ -1,10 +1,10 @@
 build:
-	docker-compose -f ./srcs/docker-compose.yml build
-	mkdir -p /home/souchen/data/mariadb
-	mkdir -p /home/souchen/data/wordpress
+	docker-compose ./srcs/docker-compose.yml build
+	mkdir -p /Users/souchen/data/db
+	mkdir -p /Users/souchen/data/wp
 
 up:
-	docker-compose -f ./srcs/docker-compose.yml up -d
+	docker-compose ./srcs/docker-compose.yml up -d
 
 down:
 	docker-compose -f ./srcs/docker-compose.yml down
@@ -24,6 +24,7 @@ clean:
 	docker rmi -f $$(docker images -qa);\
 	docker volume rm $$(docker volume ls -q);\
 	docker network rm $$(docker network ls -q);\
-	rm -rf /home/souchen/data/mariadb/\
-	rm -rf /home/souchen/data/wordpress/\
+	rm -rf /Users/souchen/data/db/\
+	rm -rf /Users/souchen/data/wp/\
+	
 .PHONY: build up down restart clean	
