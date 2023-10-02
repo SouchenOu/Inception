@@ -1,24 +1,22 @@
-build:
+Dcompose-build:
 	docker-compose ./srcs/docker-compose.yml build
 	mkdir -p /Users/souchen/data/db
 	mkdir -p /Users/souchen/data/wp
 
-up:
+Dcompose-up:
 	docker-compose ./srcs/docker-compose.yml up -d
 
-down:
+Dcompose-down:
 	docker-compose -f ./srcs/docker-compose.yml down
 
-restart:
+Dcompose-restart:
 	make down
 	make clean
 	make build
 	make up
 
-logs:	
-	cd ./srcs  docker-compose logs -f
 
-clean:
+Dcompose-clean:
 	docker stop $$(docker ps -qa);\
 	docker rm $$(docker ps -qa);\
 	docker rmi -f $$(docker images -qa);\
@@ -26,5 +24,5 @@ clean:
 	docker network rm $$(docker network ls -q);\
 	rm -rf /Users/souchen/data/db/\
 	rm -rf /Users/souchen/data/wp/\
-	
-.PHONY: build up down restart clean	
+
+.PHONY: Dcompose-build Dcompose-up Dcompose-down Dcompose-restart Dcompose-clean	
