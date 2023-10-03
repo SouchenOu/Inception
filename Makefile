@@ -16,12 +16,13 @@ down:
 	docker-compose -f ./srcs/docker-compose.yml down
 
 clean:
-	docker stop $$(docker ps -a);\
-	docker rmi -f $$(docker images -a);\
-	docker rm $$(docker ps -a);\
-	docker network rm $$(docker network ls);\
-	docker volume rm $$(docker volume ls);\
 	rm -rf /Users/souchen/data/db/\
 	rm -rf /Users/souchen/data/wp/\
+	docker stop $$(docker ps -qa);\
+	docker rm $$(docker ps -qa);\
+	docker rmi -f $$(docker images -qa);\
+	docker volume rm $$(docker volume ls -q);\
+	docker network rm $$(docker network ls -q);\
+	
 
 .PHONY: build up restart down clean	
