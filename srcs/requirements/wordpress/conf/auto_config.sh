@@ -17,7 +17,7 @@
 
 
 	wp core install --allow-root --url=$URL --title=$TITLE --admin_user=$ADMIN_USER --admin_password=$ADMIN_PSSWRD --admin_email=$ADMIN_EMAIL
-	wp user create --allow-root ${SQL_USER1} ${USER_EMAIL} --user_pass=${SQL_PASSWORD1};
+	wp user create --allow-root ${SQL_USER2} ${USER_EMAIL} --user_pass=${SQL_PASSWORD2};
 	echo "successful !"
  
 exec "$@"

@@ -6,6 +6,9 @@ build:
 up:
 	docker-compose -f ./srcs/docker-compose.yml up -d
 
+logs:
+	docker-compose -f ./srcs/docker-compose.yml logs
+	
 restart:
 	make down
 	make clean
@@ -16,13 +19,10 @@ down:
 	docker-compose -f ./srcs/docker-compose.yml down
 
 clean:
-	docker stop $$(docker ps -qa);\
-	docker rm $$(docker ps -qa);\
-	docker rmi -f $$(docker images -qa);\
-	docker volume rm $$(docker volume ls -q);\
-	docker network rm $$(docker network ls -q);\
+	docker-compose -f ./srcs/docker-compose.yml down -v --rmi all
 	rm -rf /home/souchen/data/db/\
 	rm -rf /home/souchen/data/wp/\
 	
+
 
 .PHONY: build up restart down clean	
