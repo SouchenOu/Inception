@@ -5,4 +5,3 @@ COPY ./conf/auto_config.sh /var/www/
 RUN chmod +x /var/www/auto_config.sh
 ENTRYPOINT [ "/var/www/auto_config.sh" ]
 CMD ["/usr/sbin/php-fpm7.3", "--nodaemonize"]
-
