@@ -1,7 +1,7 @@
 build:
 	docker-compose -f ./srcs/docker-compose.yml build
-	mkdir -p /home/souchen/data/db
-	mkdir -p /home/souchen/data/wp
+	mkdir -p /Users/souchen/data/db
+	mkdir -p /Users/souchen/data/wp
 
 up:
 	docker-compose -f ./srcs/docker-compose.yml up -d
@@ -20,8 +20,8 @@ down:
 
 clean:
 	docker-compose -f ./srcs/docker-compose.yml down -v --rmi all
-	rm -rf /home/souchen/data/db/\
-	rm -rf /home/souchen/data/wp/\
+	rm -rf /Users/souchen/data/db/
+	rm -rf /Users/souchen/data/wp/
 	
 
 

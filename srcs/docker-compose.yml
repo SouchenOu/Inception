@@ -52,13 +52,13 @@ volumes:
     driver_opts:
       o: bind
       type: 'none'
-      device: /home/souchen/data/db
+      device: /Users/souchen/data/db
   wordpress_v:
     driver: local
     driver_opts:
       type: 'none'
       o: bind
-      device: /home/souchen/data/wp
+      device: /Users/souchen/data/wp
 networks:
   inception_net:
     driver: bridge
